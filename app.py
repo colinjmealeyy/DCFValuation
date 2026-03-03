@@ -120,7 +120,13 @@ if success and data['revenue']:
         "PV of FCF": pv_fcfs
     }, index=[f"Year {i}" for i in range(1, years + 1)])
     
-    st.dataframe(df_projections.style.format("{:,.0f}"))
+    st.dataframe(df_projections.style.format({
+        "Revenue": "{:,.0f}",
+        "EBIT": "{:,.0f}",
+        "NOPAT (FCF proxy)": "{:,.0f}",
+        "Discount Factor": "{:.4f}",
+        "PV of FCF": "{:,.0f}"
+    }))
     
     # Sensitivity Analysis
     st.header("Sensitivity Analysis")
